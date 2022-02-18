@@ -43,7 +43,7 @@ export async function addToWatchlist(tvshow) {
 
 // searchTVShows(query): WEIRD/fetch API
 export async function searchTVShows(query) {
-  const response = await fetch(`/.netlify/function/tvshow-endpoints?searchQuery=${query}`);
+  const response = await fetch(`/.netlify/functions/tvshow-endpoint?searchQuery=${query}`);
 
   const json = await response.json();
 

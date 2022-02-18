@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { searchTVShows } from '../../services/fetch-utils';
 import TVShowList from '../TVShowList';
 
@@ -6,7 +6,7 @@ export default function SearchPage() {
 // state: query, results, watchlist
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState([]);
-  const [watchlist, setWatchlist] = useState([]);
+  // const [watchlist, setWatchlist] = useState([]);
 
   // handleSearch (fetch searchShow(query), set:watch)
   async function handleSearch(e) {
@@ -14,7 +14,7 @@ export default function SearchPage() {
 
     const tvshow = await searchTVShows(searchQuery);
 
-    setWatchlist(tvshow);
+    setResults(tvshow);
   }
 
 // *effect: refresh*
