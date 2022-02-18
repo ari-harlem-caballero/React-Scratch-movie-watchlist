@@ -21,3 +21,8 @@ export async function logout() {
 
   return (window.location.href = '../');
 }
+
+// getWatchlist: select, order(id)
+// addToWatchlist(tvshow): insert
+// searchTVShows(query): WEIRD/fetch API
+// watchMovie(id): update(bool), match(id), single
