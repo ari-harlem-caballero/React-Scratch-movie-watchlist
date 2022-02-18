@@ -36,14 +36,16 @@ export default function App() {
     // router over all
     <Router>
       <div className="App">
-        <header className="header">
+        <header>
           {/* if user&&, render logout, Nav(searchpage, watchlist) */}
           {
             currentUser &&
             <>
+              {/* <div className='links'> */}
               <NavLink to='/search'>Search</NavLink>
               <NavLink to='/watchlist'>Watchlist</NavLink>
-              <button onClick={handleLogout}>Logout</button>
+              {/* </div> */}
+              <button className='logout' onClick={handleLogout}>Logout</button>
             </>
           }
         </header>

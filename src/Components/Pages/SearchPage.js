@@ -26,7 +26,7 @@ export default function SearchPage() {
     // form, input(change/value=query), button
     // Results: <List w/ results, *refresh*>
     <div>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} className="search">
         <input 
           onChange={e => setSearchQuery(e.target.value)}
           value={searchQuery}/>
