@@ -5,14 +5,32 @@ import {
   Redirect,
   NavLink
 } from 'react-router-dom';
-import { useState } from 'react';
-import { logout } from './services/fetch-utils';
+import { useEffect, useState } from 'react';
+import { getUser, logout } from './services/fetch-utils';
 import './App.css';
+import AuthPage from './AuthPage';
+import SearchPage from './Components/Pages/SearchPage';
+import WatchlistPage from './Components/Pages/WatchlistPage';
 
-function App() {
+export default function App() {
   // state: currentUser(localStorage.getItem('supabase.auth.token'))
-  const [currentUser, setCurrentUser] = useState(localStorage.getItem('supabase.auth.token'));
+  const [currentUser, setCurrentUser] = useState('');
   
+  useEffect(() => {
+    async function fetchUser() {
+      const data = getUser();
+
+      setCurrentUser(data);
+    }
+
+    fetchUser();
+  }, []);
+
+  async function handleLogout() {
+    await logout();
+
+    setCurrentUser('');
+  }
 
   return (
     // router over all
@@ -25,14 +43,37 @@ function App() {
             <>
               <NavLink to='/search'>Search</NavLink>
               <NavLink to='/watchlist'>Watchlist</NavLink>
-              <button onClick={logout}>Logout</button>
+              <button onClick={handleLogout}>Logout</button>
             </>
           }
         </header>
         {/* switch/route: exact paths if no!user (/=search|Auth, /search=/|search, /watchlist=/|watchlist */}
+        <main>
+          <Switch>
+            <Route exact path='/'>
+              {
+                currentUser
+                  ? <Redirect to='/search' />
+                  : <AuthPage setCurrentUser={setCurrentUser} />
+              }
+            </Route>
+            <Route exact path='/search'>
+              {
+                currentUser
+                  ? <SearchPage />
+                  : <Redirect to="/" />
+              }
+            </Route>
+            <Route exact path='/watchlist'>
+              {
+                currentUser
+                  ? <WatchlistPage />
+                  : <Redirect to="/" />
+              }
+            </Route>
+          </Switch>
+        </main>
       </div>
-    </Router>
+    </Router> 
   );
 }
-
-export default App;
