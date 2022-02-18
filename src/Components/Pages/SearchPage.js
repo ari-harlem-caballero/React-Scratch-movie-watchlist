@@ -26,13 +26,14 @@ export default function SearchPage() {
     // form, input(change/value=query), button
     // Results: <List w/ results, *refresh*>
     <div>
+      <h1>Find a Show</h1>
       <form onSubmit={handleSearch} className="search">
         <input 
           onChange={e => setSearchQuery(e.target.value)}
           value={searchQuery}/>
-        <button>Search Shows</button>
+        <button>Search</button>
       </form>
-      <section>
+      <section className='tvshow-hold'>
         Results:
         <TVShowList tvshows={results} />
       </section>

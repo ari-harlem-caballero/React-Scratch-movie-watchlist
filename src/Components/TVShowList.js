@@ -6,7 +6,7 @@ export default function TVShowList({ tvshows }) {
   // props: tvshows
   return (
     //map tvshows(key=tvshow.title, tvshow=tvshow)
-    <div>
+    <div className='tvshow-list'>
       {
         tvshows.map((tvshow, i) => 
           <TVShow key={tvshow.title + i} 

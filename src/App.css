@@ -2,6 +2,10 @@ body, html, #root, .App {
   height: 100%;
 }
 
+.App {
+  text-align: center;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -45,4 +49,52 @@ header a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.search input {
+  margin-right: 20px;
+}
+
+.tvshow-hold {
+  margin-top: 10px;
+}
+
+.tvshow-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tvshow {
+  width: 200px;
+  min-height: 200px;
+  /* max-height: 500px;
+  overflow-y: auto; */
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 2px blue solid;
+  cursor: pointer;
+}
+
+.tvshow:hover {
+  border: 2px red solid;
+}
+
+.tvshow img {
+  width: 150px;
+  margin: 10px;
+  max-height: 225px;
+}
+
+h2 {
+  margin: 5px;
+}
+
+.tvshow-description {
+  margin: 5px;
 }
