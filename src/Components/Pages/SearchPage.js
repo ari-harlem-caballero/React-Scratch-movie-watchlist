@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { searchTVShows } from '../../services/fetch-utils';
+import TVShowList from '../TVShowList';
 
 export default function SearchPage() {
 // state: query, results, watchlist
@@ -33,6 +34,7 @@ export default function SearchPage() {
       </form>
       <section>
         Results:
+        <TVShowList tvshows={results} />
       </section>
     </div>
   );
