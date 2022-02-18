@@ -23,6 +23,40 @@ export async function logout() {
 }
 
 // getWatchlist: select, order(id)
+export async function getWatchlist() {
+  const response = await client
+    .from('tv-shows')
+    .select()
+    .order('id');
+
+  return response.data;
+}
+
 // addToWatchlist(tvshow): insert
+export async function addToWatchlist(tvshow) {
+  const response = await client
+    .from('tv-show')
+    .insert(tvshow);
+
+  return response.data;
+}
+
 // searchTVShows(query): WEIRD/fetch API
+export async function searchTVShows(query) {
+  const response = await fetch(`/.netlify/function/tvshow-endpoints?searchQuery=${query}`);
+
+  const json = await response.json();
+
+  return json.data.results;
+}
+
 // watchMovie(id): update(bool), match(id), single
+export async function watchMovie(id) {
+  const response = await client
+    .from('tv-shows')
+    .update({ 'watched' : true })
+    .match({ id })
+    .single();
+
+  return response.data;
+}
