@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function TVShow({ tvshow }) {
   // props: tvshow
-  // *handleClick*
+  // *handleClick*: 
 
   return (
     //tvshow.name, overview, poster_path *haveWatched*

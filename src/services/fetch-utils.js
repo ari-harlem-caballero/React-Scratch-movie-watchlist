@@ -51,7 +51,7 @@ export async function searchTVShows(query) {
 }
 
 // watchMovie(id): update(bool), match(id), single
-export async function watchMovie(id) {
+export async function watchTVShow(id) {
   const response = await client
     .from('tv-shows')
     .update({ 'watched' : true })
