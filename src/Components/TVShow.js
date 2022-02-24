@@ -29,7 +29,7 @@ export default function TVShow({
       className={`tvshow ${haveWatched 
         ? 'watched' : ''}`}
       onClick={handleClick}>
-      <h1>{haveWatched && '✔️'}</h1>
+      <h1>{haveWatched && '👀'}</h1>
       <h2>{tvshow.name}</h2>
       <img src={tvshow.poster_path ? `https://image.tmdb.org/t/p/original${tvshow.poster_path}` : `./film.png`} alt="poster image of tv-show"/>
       <p className='tvshow-description'>{tvshow.overview}</p>

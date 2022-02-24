@@ -19,7 +19,7 @@ export default function WatchlistPage() {
   
   // *refreshWatchList*: 
   return (
-    <div>
+    <div className='watchlist-hold'>
       {/* tvshowList: tvshows */}
       <h1>My Show Watchlist:</h1>
       <TVShowList 

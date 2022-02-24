@@ -15,12 +15,14 @@ export default function WatchlistItem({
   }
 
   return (
-    <div onClick={handleClick}>
+    <div 
+      onClick={handleClick}
+      className='watchlist'>
       {/* call handleCLick, watched/title/descript/img*/}
       <h1>{tvshow.watched ? '✔️' : '📺'}</h1>
       <h2>{tvshow.title}</h2>
       <img src={tvshow.image ? `https://image.tmdb.org/t/p/original${tvshow.image}` : `./film.png`} alt="poster image of tv-show"/>
-      <p>{tvshow.description}</p>
+      <p className='tvshow-description'>{tvshow.description}</p>
     </div>
   );
 }
