@@ -5,7 +5,8 @@ import WatchlistItem from './WatchlistItem';
 
 export default function TVShowList({ 
   tvshows, 
-  isOnWatchList 
+  isOnWatchlist,
+  fetchWatchlist, 
 }) {
   // ??when to render <Movie> vs <WatchListItem> (URL)
   // props: tvshows
@@ -14,16 +15,18 @@ export default function TVShowList({
   return (
     //map tvshows(key=tvshow.title, tvshow=tvshow)
     <div className='tvshow-list'>
-      {
+      { tvshows && 
         tvshows.map((tvshow, i) => 
           location.pathname.includes('search')
             ? <TVShow 
-              key={tvshow.title + i} 
+              key={tvshow.name + i} 
               tvshow={tvshow} 
-              isOnWatchList={isOnWatchList}/>
+              isOnWatchlist={isOnWatchlist}
+              fetchWatchlist={fetchWatchlist}/>
             : <WatchlistItem 
               key={tvshow.title + i}
-              tvshow={tvshow} />)
+              tvshow={tvshow} 
+              fetchWatchlist={fetchWatchlist}/>)
       }
     </div>
   );

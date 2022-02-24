@@ -25,7 +25,7 @@ export async function logout() {
 // getWatchlist: select, order(id)
 export async function getWatchlist() {
   const response = await client
-    .from('tv-shows')
+    .from('tv_shows')
     .select()
     .order('id');
 
@@ -35,7 +35,7 @@ export async function getWatchlist() {
 // addToWatchlist(tvshow): insert
 export async function addToWatchlist(tvshow) {
   const response = await client
-    .from('tv-show')
+    .from('tv_shows')
     .insert(tvshow);
 
   return response.data;
@@ -53,7 +53,7 @@ export async function searchTVShows(query) {
 // watchMovie(id): update(bool), match(id), single
 export async function watchTVShow(id) {
   const response = await client
-    .from('tv-shows')
+    .from('tv_shows')
     .update({ 'watched' : true })
     .match({ id })
     .single();

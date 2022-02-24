@@ -2,10 +2,11 @@ import { addToWatchlist } from '../services/fetch-utils';
 
 export default function TVShow({ 
   tvshow, 
-  isOnWatchList 
+  isOnWatchlist,
+  fetchWatchlist, 
 }) {
   // props: tvshow
-  const haveWatched = isOnWatchList(tvshow.id);
+  const haveWatched = isOnWatchlist(tvshow.id);
 
   // *handleClick*: 
   async function handleClick() {
@@ -18,6 +19,7 @@ export default function TVShow({
       };
 
       await addToWatchlist(watchlistItem);
+      await fetchWatchlist();
     }
   }
 
@@ -27,6 +29,7 @@ export default function TVShow({
       className={`tvshow ${haveWatched 
         ? 'watched' : ''}`}
       onClick={handleClick}>
+      <h1>{haveWatched && '✔️'}</h1>
       <h2>{tvshow.name}</h2>
       <img src={tvshow.poster_path ? `https://image.tmdb.org/t/p/original${tvshow.poster_path}` : `./film.png`} alt="poster image of tv-show"/>
       <p className='tvshow-description'>{tvshow.overview}</p>

@@ -22,7 +22,8 @@ export default function WatchlistPage() {
     <div>
       {/* tvshowList: tvshows */}
       <h1>My Show Watchlist:</h1>
-      <TVShowList tvshows={tvshows} 
+      <TVShowList 
+        tvshows={tvshows} 
         fetchWatchlist={fetchWatchlist}/>
     </div>
   );

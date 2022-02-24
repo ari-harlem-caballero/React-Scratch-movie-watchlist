@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { searchTVShows, getWatchlist } from '../../services/fetch-utils';
+import { useEffect, useState } from 'react';
+import { getWatchlist, searchTVShows } from '../../services/fetch-utils';
 import TVShowList from '../TVShowList';
 
 export default function SearchPage() {
@@ -20,6 +20,16 @@ export default function SearchPage() {
 // *effect: refresh*
 
 // *refresh (fetch Watchlist, set:watch)*
+  async function fetchWatchlist() {
+    const userWatchlist = await getWatchlist();
+
+    setWatchlist(userWatchlist);
+  }
+
+  useEffect(() => {
+    fetchWatchlist();
+  }, []);
+
 // *onWatchlist(api_id): match weirdness*
   function isOnWatchlist(api_id) {
     const match = watchlist.find(item => Number(item.api_id) === Number(api_id));
@@ -40,8 +50,10 @@ export default function SearchPage() {
       </form>
       <section className='tvshow-hold'>
         Results:
-        <TVShowList tvshows={results} 
-          isOnWatchList={isOnWatchlist}/>
+        <TVShowList 
+          tvshows={results} 
+          isOnWatchlist={isOnWatchlist}
+          fetchWatchlist={fetchWatchlist}/>
       </section>
     </div>
   );

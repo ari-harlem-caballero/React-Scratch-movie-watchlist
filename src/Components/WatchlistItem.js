@@ -1,12 +1,17 @@
 import React from 'react';
 import { watchTVShow } from '../services/fetch-utils';
 
-export default function WatchlistItem({ tvshow }) {
+export default function WatchlistItem({ 
+  tvshow, 
+  fetchWatchlist
+}) {
   // THIS PAGE TALKS TO SUPABASE
   // props: tvshow, *refresh*
   //handleCLick (fetch watchTV(show.id))
   async function handleClick() {
     await watchTVShow(tvshow.id);
+
+    await fetchWatchlist();
   }
 
   return (
